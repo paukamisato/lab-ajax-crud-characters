@@ -19,13 +19,18 @@ window.addEventListener('load', () => {
 
   document.getElementById('fetch-one').addEventListener('click', function (event) {
     // console.log(valueId)
-    charactersAPI.getOneRegister(1)
+    const characterId = document.getElementById('fetch-one-input').value
+    charactersAPI.getOneRegister(characterId)
       .then(response => {
 
         const inputs = document.querySelectorAll('#fetch-one-input')
         const { name, occupation, cartoon, weapon } = response.data
-        console.log(document.querySelectorAll('#fetch-one-input'))
-
+        console.log(name, occupation, cartoon, weapon)
+        inputs[0].value = name
+        inputs[1].value = occupation
+        inputs[2].value = cartoon
+        inputs[3].value = weapon
+        
       })
       .catch(err => console.error('ERROR', err))
 
